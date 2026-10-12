@@ -2,7 +2,7 @@
 
 ConsignU adalah aplikasi manajemen penjualan barang konsinyasi untuk simulasi department store. Aplikasi dibuat dengan HTML, CSS, dan JavaScript murni. Supabase PostgreSQL digunakan sebagai database dan backend-as-a-service.
 
-**Demo Web** https://github.com/mondells/Sistem-Pengelolaan-Penjualan-Barang-Konsinyasi.git
+**Demo Web** https://mondells.github.io/Sistem-Pengelolaan-Penjualan-Barang-Konsinyasi/
 
 ## Struktur sederhana
 
