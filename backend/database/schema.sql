@@ -131,6 +131,7 @@ drop policy if exists "authenticated can read produk" on public.produk;
 drop policy if exists "authenticated can manage produk" on public.produk;
 drop policy if exists "authenticated can read transaksi" on public.transaksi;
 drop policy if exists "authenticated can insert transaksi" on public.transaksi;
+drop policy if exists "authenticated can update transaksi" on public.transaksi;
 drop policy if exists "authenticated can read detail" on public.detail_transaksi;
 drop policy if exists "authenticated can insert detail" on public.detail_transaksi;
 drop policy if exists "authenticated can read pembayaran" on public.pembayaran_mitra;
@@ -144,7 +145,13 @@ create policy "authenticated can read produk" on public.produk for select to aut
 create policy "authenticated can manage produk" on public.produk for all to authenticated using (true) with check (true);
 create policy "authenticated can read transaksi" on public.transaksi for select to authenticated using (true);
 create policy "authenticated can insert transaksi" on public.transaksi for insert to authenticated with check (true);
+create policy "authenticated can update transaksi" on public.transaksi for update to authenticated using (true) with check (true);
 create policy "authenticated can read detail" on public.detail_transaksi for select to authenticated using (true);
 create policy "authenticated can insert detail" on public.detail_transaksi for insert to authenticated with check (true);
 create policy "authenticated can read pembayaran" on public.pembayaran_mitra for select to authenticated using (true);
 create policy "authenticated can manage pembayaran" on public.pembayaran_mitra for all to authenticated using (true) with check (true);
+
+grant usage on schema public to authenticated;
+grant select, insert, update, delete on public.mitra, public.kategori, public.produk, public.transaksi, public.detail_transaksi, public.pembayaran_mitra to authenticated;
+grant select on public.v_ringkasan_mitra to authenticated;
+grant execute on function public.simpan_transaksi(jsonb) to authenticated;

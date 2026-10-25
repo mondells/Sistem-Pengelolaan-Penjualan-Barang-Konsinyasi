@@ -27,15 +27,17 @@ Tidak ada backend Node.js atau server lokal. `frontend/js/app.js` adalah pengend
 ## Menyiapkan Supabase
 
 1. Buat project baru di Supabase.
-2. Buka **SQL Editor**, tempel seluruh isi `backend/database/schema.sql`, lalu jalankan.
+2. Buka **SQL Editor**, tempel seluruh isi `backend/database/schema.sql`, lalu jalankan. Jika schema pernah dijalankan, jalankan ulang agar kebijakan RPC transaksi terbaru ikut diterapkan.
 3. Buka **Project Settings > API**.
 4. Salin Project URL dan publishable/anon key ke `frontend/js/config.js`.
 5. Jangan gunakan `service_role` key di frontend.
-6. Untuk penggunaan dengan RLS, buat user melalui Supabase Auth dan gunakan sesi login sebelum mengakses data produksi.
+6. Pastikan provider **Email** aktif di **Authentication > Providers**.
+7. Tambahkan URL Live Server dan GitHub Pages ke **Authentication > URL Configuration > Redirect URLs**. Konfirmasi email harus diselesaikan jika diaktifkan pada project.
+8. Buka aplikasi, pilih **Daftar**, lalu masuk. Data kategori, mitra, produk, transaksi, dan pembayaran setelah itu disimpan di Supabase.
 
 ## Menjalankan aplikasi
 
-Buka `frontend/index.html` langsung di Chrome, atau klik kanan `frontend/index.html` di VS Code lalu pilih **Open with Live Server**. Sebelum konfigurasi Supabase diisi, aplikasi menggunakan data demo di `localStorage` agar semua alur POS dapat dicoba. Setelah integrasi Supabase diaktifkan, gunakan helper di `frontend/js/supabase.js` dan RPC transaksi atomik di `backend/database/schema.sql` sebagai jalur data produksi.
+Buka `frontend/index.html` langsung di Chrome, atau klik kanan `frontend/index.html` di VS Code lalu pilih **Open with Live Server**. Jika Supabase sudah dikonfigurasi, aplikasi meminta login dan memakai data cloud; tanpa konfigurasi Supabase, aplikasi memakai data demo di `localStorage`. Data demo yang tersimpan di browser tidak otomatis disalin ke Supabase. Transaksi cloud menggunakan RPC atomik dari `backend/database/schema.sql`.
 
 ### Menjalankan dengan Live Server
 
@@ -55,7 +57,7 @@ Jika hanya ingin mencoba tampilan dan alur demo, langkah ini sudah cukup. Data d
 4. Klik **Run** dan pastikan tidak ada pesan error.
 5. Periksa tabel pada **Table Editor**.
 
-RLS pada schema hanya mengizinkan user dengan role `authenticated`. Karena aplikasi saat ini belum memiliki halaman login, UI masih menggunakan mode demo. Untuk mode produksi, tambahkan Supabase Auth dan panggil `supabase.auth.signInWithPassword()` sebelum membaca atau mengubah tabel. Publishable/anon key boleh berada di frontend, tetapi `service_role` key tidak boleh.
+RLS pada schema hanya mengizinkan user dengan role `authenticated`, dan halaman login aplikasi menggunakan Supabase Auth. Semua akun yang berhasil login saat ini memiliki akses ke data yang sama; batasi kebijakan RLS lebih lanjut sebelum aplikasi dipakai oleh beberapa organisasi atau role dengan izin berbeda. Publishable/anon key boleh berada di frontend, tetapi `service_role` key tidak boleh.
 
 ## Menghubungkan ke GitHub
 

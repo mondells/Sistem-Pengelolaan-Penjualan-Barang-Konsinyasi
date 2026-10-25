@@ -155,5 +155,17 @@ button { cursor: pointer; border: 0; }
 .report-card { padding: 17px 18px; border: 1px solid var(--line); border-radius: 13px; background: #fff; }
 .report-card small { color: var(--muted); font-size: 11px; }
 .report-card b { display: block; margin: 10px 0; font: 800 20px 'Plus Jakarta Sans'; }
+.sync-status.connected i { background: var(--green); }
+.app-shell.auth-mode .sidebar { display: none; }
+.app-shell.auth-mode .main-content { width: 100%; margin-left: 0; }
+.app-shell.auth-mode .top-actions > :not(.sync-status) { display: none; }
+.app-shell.auth-mode .page-content { display: grid; min-height: calc(100vh - 76px); place-items: center; }
+.auth-panel { width: min(440px, 100%); padding: 30px; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: var(--shadow); }
+.auth-panel h1 { margin: 0 0 8px; font: 800 24px/1.2 'Plus Jakarta Sans', sans-serif; }
+.auth-description { margin: 0 0 24px; color: var(--muted); line-height: 1.6; }
+.auth-form { display: grid; gap: 16px; }
+.auth-form .btn { width: 100%; }
+.auth-message { min-height: 18px; margin: 0; color: var(--red); font-size: 12px; line-height: 1.5; }
+.auth-toggle { margin-top: 18px; padding: 8px 0; background: none; color: var(--indigo); font-size: 12px; font-weight: 700; }
 @media (max-width: 1100px) { .sidebar { width: 220px; } .main-content { width: calc(100% - 220px); margin-left: 220px; } .topbar, .page-content { padding-right: 24px; padding-left: 24px; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .pos-layout { grid-template-columns: 1fr 320px; } }
 @media (max-width: 760px) { .sidebar { width: 260px; transform: translateX(-100%); transition: .25s; box-shadow: 10px 0 30px #1b214522; } .sidebar.open { transform: translateX(0); } .main-content { width: 100%; margin-left: 0; } .topbar { height: 64px; padding: 0 16px; } .menu-toggle { display: block; } .profile-copy, .sync-status { display: none; } .page-content { padding: 22px 15px 35px; } .page-header { flex-direction: column; margin-bottom: 18px; } .page-header h1 { font-size: 23px; } .page-header .btn { width: 100%; } .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .stat-card { padding: 14px; } .stat-card h2 { font-size: 20px; } .dashboard-grid, .lower-grid, .pos-layout { grid-template-columns: 1fr; gap: 14px; } .product-picker { grid-template-columns: repeat(2, 1fr); padding: 13px; } .report-cards { grid-template-columns: 1fr; } .form-grid { grid-template-columns: 1fr; } .form-field.full { grid-column: auto; } .donut-layout { flex-direction: column; padding-bottom: 22px; } .data-table td, .data-table th { padding: 12px 14px; } .panel-head { padding: 15px; } .chart-wrap { height: 200px; } .breadcrumb span, .breadcrumb b { display: none; } .profile-menu > span:last-child { display: none; } }
