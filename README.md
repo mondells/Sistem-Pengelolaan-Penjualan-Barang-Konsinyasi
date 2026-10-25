@@ -81,7 +81,7 @@ Setelah berhasil, perubahan berikutnya dilakukan dengan urutan **Source Control 
 2. Masuk ke **Settings > Pages**.
 3. Pada **Build and deployment**, pilih **Deploy from a branch**.
 4. Pilih branch `main` dan folder `/ (root)`, lalu klik **Save**.
-5. Tunggu beberapa saat, lalu tambahkan `/frontend/` pada URL GitHub Pages untuk membuka aplikasi.
+5. Tunggu beberapa saat, lalu buka URL GitHub Pages; halaman root akan mengarahkan ke aplikasi di `/frontend/`.
 
 Karena aplikasi menggunakan hash route seperti `#dashboard` dan `#pos`, navigasi tetap dapat bekerja di GitHub Pages. Pastikan URL Supabase dan publishable key pada `frontend/js/config.js` sudah benar sebelum melakukan publish.
 
