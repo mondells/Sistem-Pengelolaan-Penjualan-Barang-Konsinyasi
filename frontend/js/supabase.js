@@ -63,7 +63,7 @@ export async function loadRemoteStore() {
       id: row.nomor_transaksi,
       databaseId: row.id,
       createdAt: row.terjadi_pada,
-      items: details.filter(item => item.transaksi_id === row.id).map(item => ({ productId: item.produk_id, quantity: number(item.jumlah), price: number(item.harga_satuan) })),
+      items: details.filter(item => item.transaksi_id === row.id).map(item => ({ productId: item.produk_id, quantity: number(item.jumlah), price: number(item.harga_satuan), commission: number(item.persentase_komisi) })),
       total: number(row.total_bruto),
       commission: number(row.total_komisi),
       partnerDue: number(row.total_hak_mitra),
